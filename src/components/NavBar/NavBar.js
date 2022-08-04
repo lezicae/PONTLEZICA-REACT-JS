@@ -1,7 +1,7 @@
 import React from "react";
 import CartWidget from "../CartWidget/CartWidget";
 
-const container2 = {display: 'flex', justifyContent:'space-between', listStyleType: 'none'}
+const container2 = {display: 'flex', justifyContent:'space-between', alignItems:'center', listStyleType: 'none'}
 const box3 = {padding: 10}
 
 function NavBar(){
@@ -18,8 +18,9 @@ function NavBar(){
                     Fotos
                 </a>
                 </li>
+                <CartWidget/>
             </ul>
-            <CartWidget/>
+
         </div>
     )
 }
