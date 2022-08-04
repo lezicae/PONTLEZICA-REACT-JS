@@ -1,3 +1,6 @@
+import React from "react";
+import CartWidget from "../CartWidget/CartWidget";
+
 const container2 = {display: 'flex', justifyContent:'space-between', listStyleType: 'none'}
 const box3 = {padding: 10}
 
@@ -12,12 +15,11 @@ function NavBar(){
                 </li>
                 <li style={box3}>
                 <a href="#">
-                    Carrito
+                    Fotos
                 </a>
                 </li>
-
-
             </ul>
+            <CartWidget/>
         </div>
     )
 }
