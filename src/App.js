@@ -1,15 +1,17 @@
 import './App.css';
 import Header from './components/Header/Header';
 import ItemListContainer from './components/ItemListComponent/ItemListContainer';
+import ItemsLists from './components/ItemsList/ItemsList';
 
 function App() {
 
-  const greeting="Hola Mundo!";
+  const Hola="Hola Mundo!";
 
   return (
     <>
       <Header/>
-      <ItemListContainer greeting={greeting}/>
+      <ItemListContainer chau={Hola}/>
+      <ItemsLists/>
     </>
   );
 }
