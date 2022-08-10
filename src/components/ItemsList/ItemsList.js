@@ -8,7 +8,7 @@ function getProductos(){
     });
 }
 
-export default function ItemsLists(){
+export default function ItemsList(){
     const [ItemsData, setData] = useState([]);
 
     useEffect(() => {
@@ -34,4 +34,4 @@ export default function ItemsLists(){
             }
         </div>
     )
-}
+};

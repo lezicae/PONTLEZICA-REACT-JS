@@ -11,7 +11,6 @@ function App() {
     <>
       <Header/>
       <ItemListContainer chau={Hola}/>
-      <ItemsLists/>
     </>
   );
 }
