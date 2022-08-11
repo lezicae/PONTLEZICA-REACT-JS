@@ -1,12 +1,27 @@
+import React, { useEffect, useState } from "react"
 import ItemCount from "../ItemCount/ItemCount"
 import ItemsList from "../ItemsList/ItemsList"
+import itemsDatabase from "../Data";
 
-function ItemListContainer(props) {
+function getProductos(){
+  return new Promise((resolve) => {
+      setTimeout(() => resolve(itemsDatabase), 2000);
+  });
+}
+
+function ItemListContainer() {
+  const [promiseData, setData] = useState([]);
+
+  useEffect(() => {
+      getProductos().then((res) => {
+          setData(res);
+      })
+  }, []);
+
   return (
     <>
-      <h1>{props.chau}</h1>
       <ItemCount initial={1} stock={4}/>
-      <ItemsList/>
+      <ItemsList promiseData={promiseData}/>
     </>
   )
 }

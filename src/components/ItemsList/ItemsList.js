@@ -1,33 +1,18 @@
-import React, { useEffect, useState } from "react"
 import Items from "../Items/Items"
-import ItemsData from "../Data";
 
-function getProductos(){
-    return new Promise((resolve) => {
-        setTimeout(() => resolve(ItemsData), 2000);
-    });
-}
-
-export default function ItemsList(){
-    const [ItemsData, setData] = useState([]);
-
-    useEffect(() => {
-        getProductos().then((respuesta) => {
-            setData(respuesta);
-        })
-    }, []);
+export default function ItemsList(mapData){
 
     return (
         <div>
             <h1>Listado de datos</h1>
             {
-                ItemsData.map((dataOne)=>{
+                mapData.promiseData.map((mapItem)=>{
                     return (
                         <Items
-                        key={dataOne.id}
-                        title={dataOne.title}
-                        price={dataOne.price}
-                        img={dataOne.img}
+                        key={mapItem.id}
+                        title={mapItem.title}
+                        price={mapItem.price}
+                        img={mapItem.img}
                         />
                     );
                 })

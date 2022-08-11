@@ -1,4 +1,4 @@
-const ItemsData = [
+const itemsDatabase = [
     {
         id:1,
         title:"Prod 1",
@@ -25,4 +25,4 @@ const ItemsData = [
     },
 ]
 
-export default ItemsData;
+export default itemsDatabase;
