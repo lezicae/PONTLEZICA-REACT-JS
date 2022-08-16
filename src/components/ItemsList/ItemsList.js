@@ -1,4 +1,4 @@
-import Items from "../Items/Items"
+import Items from "../Item/Item"
 
 export default function ItemsList(mapData){
 

@@ -14,9 +14,6 @@ function ItemCount(props){
   const handleDecrement = ()=>{
     let Decrecimiento = clicks <= props.stock && clicks > props.initial ? setClicks(clicks-1):null;
   }
-  const onAdd = ()=>{
-    console.log("Añadido al carrito")
-  }
 
   return(
     <div style={container1}>
@@ -24,7 +21,7 @@ function ItemCount(props){
       <button style={box1} onClick={ handleIncrement } >+</button>
       <h3 style={box2}>{clicks}</h3>
       <button style={box1} onClick={ handleDecrement } >-</button>
-      <button style={box3} onClick={onAdd}>Listo!</button>
+      <button style={box3} onClick={props.onAdd}>Listo!</button>
     </div>
   )
 }

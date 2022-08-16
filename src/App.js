@@ -1,6 +1,6 @@
 import './App.css';
 import Header from './components/Header/Header';
-import ItemListContainer from './components/ItemListComponent/ItemListContainer';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 
 function App() {

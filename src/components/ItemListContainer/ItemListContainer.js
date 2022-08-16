@@ -3,13 +3,18 @@ import ItemCount from "../ItemCount/ItemCount"
 import ItemsList from "../ItemsList/ItemsList"
 import itemsDatabase from "../Data";
 
-function getAllItems(){
-  return new Promise((resolve) => {
-      setTimeout(() => resolve(itemsDatabase), 2000);
-  });
-}
-
 function ItemListContainer() {
+
+  const onAdd = ()=>{
+    console.log("Añadido al carrito")
+  }
+  
+  function getAllItems(){
+    return new Promise((resolve) => {
+        setTimeout(() => resolve(itemsDatabase), 2000);
+    });
+  }
+
   const [promiseData, setData] = useState([]);
 
   useEffect(() => {
@@ -20,7 +25,7 @@ function ItemListContainer() {
 
   return (
     <>
-      {/* <ItemCount initial={1} stock={4}/> */}
+      <ItemCount onAdd={onAdd} initial={1} stock={4}/>
       <ItemsList promiseData={promiseData}/>
     </>
   )
