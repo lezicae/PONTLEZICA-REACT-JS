@@ -1,22 +1,32 @@
 import React, { useEffect, useState } from "react"
 import itemsDatabase from "../Data";
 import ItemDetail  from "../ItemDetail/ItemDetail";
+import {useParams} from "react-router-dom";
 
 function ItemDetailContainer() {
-
-  function getItem(){
-    return new Promise((resolve) => {
-        setTimeout(() => resolve(itemsDatabase[0]), 2000);
-    });
-  }
+  let idItem = useParams().idItem
+  console.log(idItem)
 
   const [unItem, setUnItem] = useState({});
 
+  function getItem(){
+    return new Promise((resolve) => {
+        setTimeout(() => resolve(itemsDatabase), 2000);
+        console.log(itemsDatabase)
+    });
+  }
+
 useEffect(() => {
-    getItem().then((res) => {
-      setUnItem(res);
-    })
-}, []);
+    let itemRequested = itemsDatabase.find((elemento)=> elemento.id == idItem)
+    if(idItem===undefined){
+      getItem().then((res) =>{
+        setUnItem({})
+      })
+    }else
+    {
+      setUnItem(itemRequested)
+    }
+}, [idItem]);
 
   return (
     <>

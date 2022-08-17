@@ -1,4 +1,5 @@
-import Items from "../Item/Item"
+import Item from "../Item/Item"
+
 
 export default function ItemsList(mapData){
 
@@ -8,12 +9,12 @@ export default function ItemsList(mapData){
             {
                 mapData.promiseData.map((mapItem)=>{
                     return (
-                        <Items
-                        key={mapItem.id}
-                        title={mapItem.title}
-                        price={mapItem.price}
-                        img={mapItem.img}
-                        />
+                            <Item
+                            id={mapItem.id}
+                            key={mapItem.id}
+                            title={mapItem.title}
+                            price={mapItem.price}
+                            img={mapItem.img}/>
                     );
                 })
             }

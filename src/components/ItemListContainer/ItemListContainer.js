@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react"
-import ItemCount from "../ItemCount/ItemCount"
 import ItemsList from "../ItemsList/ItemsList"
 import itemsDatabase from "../Data";
+import {useParams} from "react-router-dom";
 
 function ItemListContainer() {
-
-  const onAdd = ()=>{
-    console.log("Añadido al carrito")
-  }
+  let idCat = useParams().idCat
+  console.log(idCat)
   
   function getAllItems(){
     return new Promise((resolve) => {
@@ -18,14 +16,20 @@ function ItemListContainer() {
   const [promiseData, setData] = useState([]);
 
   useEffect(() => {
-      getAllItems().then((res) => {
-          setData(res);
-      })
-  }, []);
+      let filter = itemsDatabase.filter(elemento => elemento.category === idCat)
+      console.log(filter)
+          if(idCat===undefined){
+            getAllItems().then((res) =>{
+              setData(res)
+            })
+          }else
+          {
+            setData(filter)
+          }
+  }, [idCat]);
 
   return (
     <>
-      <ItemCount onAdd={onAdd} initial={1} stock={4}/>
       <ItemsList promiseData={promiseData}/>
     </>
   )

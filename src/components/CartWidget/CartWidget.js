@@ -3,7 +3,7 @@ import { faCartShopping }  from "@fortawesome/free-solid-svg-icons";
 
 function cartWidget() {
     return (
-       <FontAwesomeIcon icon={ faCartShopping } /> 
+       <FontAwesomeIcon icon={ faCartShopping } />
     )
   }
 
