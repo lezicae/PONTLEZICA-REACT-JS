@@ -17,7 +17,7 @@ function ItemDetailContainer() {
   }
 
 useEffect(() => {
-    let itemRequested = itemsDatabase.find((elemento)=> elemento.id == idItem)
+    let itemRequested = itemsDatabase.find((elemento)=> elemento.id === Number(idItem))
     if(idItem===undefined){
       getItem().then((res) =>{
         setUnItem({})

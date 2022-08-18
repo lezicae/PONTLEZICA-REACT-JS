@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState }  from 'react';
 import ItemCount from "../ItemCount/ItemCount"
 
 const Container1 = {display:'flex',justifyContent:'space-around',marginLeft:20,marginTop:40, width:'1200px', height:'700px'}
+const box1 = {padding:0, margin:0}
 
 function ItemDetail(itemProps) {
-  const onAdd = ()=>{
-    console.log("Añadido al carrito")
+  const [estado,setEstado] = useState(1);
+
+  const handleOnAdd = (count)=>{
+    console.log("Añadido al carrito "+count)
+    setEstado(count)
   }
 
   return (
@@ -16,10 +20,11 @@ function ItemDetail(itemProps) {
         <div>
             <h2>{itemProps.unItem.title}</h2>
             <p>{itemProps.unItem.description}</p>
-            <ItemCount onAdd={onAdd} initial={1} stock={4}/>
+
+             {estado === 1 ? <ItemCount handleOnAdd={handleOnAdd} initial={1} stock={4}/> : <a style={box1} href='/cart'>Ir al carrito</a>}
         </div>
     </div>
   )
 }
 
-export default ItemDetail
+export default ItemDetail;
