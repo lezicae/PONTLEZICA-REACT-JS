@@ -5,14 +5,12 @@ import {useParams} from "react-router-dom";
 
 function ItemDetailContainer() {
   let idItem = useParams().idItem
-  console.log(idItem)
 
   const [unItem, setUnItem] = useState({});
 
   function getItem(){
     return new Promise((resolve) => {
         setTimeout(() => resolve(itemsDatabase), 2000);
-        console.log(itemsDatabase)
     });
   }
 

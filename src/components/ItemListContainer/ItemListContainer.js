@@ -5,7 +5,6 @@ import {useParams} from "react-router-dom";
 
 function ItemListContainer() {
   let idCat = useParams().idCat
-  console.log(idCat)
   
   function getAllItems(){
     return new Promise((resolve) => {
@@ -17,7 +16,6 @@ function ItemListContainer() {
 
   useEffect(() => {
       let filter = itemsDatabase.filter(elemento => elemento.category === idCat)
-      console.log(filter)
           if(idCat===undefined){
             getAllItems().then((res) =>{
               setData(res)

@@ -5,7 +5,8 @@ const itemsDatabase = [
         price:111,
         category:'1',
         img:"http://dummyimage.com/280x260.png/cc0000/ffffff",
-        description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a ligula purus."
+        description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a ligula purus.",
+        stock:4
     },
     {
         id:2,
@@ -13,7 +14,8 @@ const itemsDatabase = [
         price:222,
         category:'1',
         img:"http://dummyimage.com/280x260.png/cc0000/ffffff",
-        description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a ligula purus."
+        description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a ligula purus.",
+        stock:5
     },
     {
         id:3,
@@ -21,7 +23,8 @@ const itemsDatabase = [
         price:333,
         category:'3',
         img:"http://dummyimage.com/280x260.png/cc0000/ffffff",
-        description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a ligula purus."
+        description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a ligula purus.",
+        stock:5
     },
     {
         id:4,
@@ -29,7 +32,8 @@ const itemsDatabase = [
         price:444,
         category:'3',
         img:"http://dummyimage.com/280x260.png/cc0000/ffffff",
-        description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a ligula purus."
+        description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a ligula purus.",
+        stock:5
     },
 ]
 
