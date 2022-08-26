@@ -1,17 +1,17 @@
 import React, { useContext, useState }  from 'react';
 import { cartContext } from '../../context/CartContextProvider/CartContextProvider';
 import ItemCount from "../ItemCount/ItemCount"
+import { Link } from "react-router-dom";
 
 const Container1 = {display:'flex',justifyContent:'space-around',marginLeft:20,marginTop:40, width:'1200px', height:'700px'}
-const box1 = {padding:0, margin:0}
 
 function ItemDetail(itemProps) {
   const [estado,setEstado] = useState(1);
-  const {addToCart}= useContext(cartContext);
+  const {addToCart} = useContext(cartContext);
 
   const handleOnAdd = (count)=>{
-    const itemToCart = {itemProps};
-    addToCart(itemToCart, count)
+    let itemToAdd = {...itemProps.unItem, count}
+    addToCart(itemToAdd)
     setEstado(count)
   }
 
@@ -23,7 +23,7 @@ function ItemDetail(itemProps) {
         <div>
             <h2>{itemProps.unItem.title}</h2>
             <p>{itemProps.unItem.description}</p>
-             {estado === 1 ? <ItemCount handleOnAdd={handleOnAdd} initial={1} stock={4}/> : <a style={box1} href='/cart'>Ir al carrito</a>}
+             {estado === 1 ? <ItemCount handleOnAdd={handleOnAdd} initial={1} stock={4}/> : <Link to={'/cart'}>Ir al carrito</Link>}
         </div>
     </div>
   )

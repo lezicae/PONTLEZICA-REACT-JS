@@ -3,23 +3,16 @@ import { createContext, useState } from 'react';
 export const cartContext = createContext();
 
 export function CartContextProvider({children}){
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([])
 
-  function addToCart( itemToCart, count ){
-    const item = {...itemToCart, count};
-    const newCart = [...cart, item];
-    console.log(cart);
-    if (isInCart(itemToCart.id)){
-      if(count > 0){
+  function addToCart( itemProps, count ){
+    const newCart = [...cart, itemProps]
+    if (isInCart(itemProps.id)){
         cart.map(item => {
-          if(item.id === itemToCart.id){
-            item.count = count;
-          }
-        } )
-      }
-      }
-    else{;
-      setCart(newCart);
+          return(item.id === itemProps.id ? null : item.count = count)
+        })
+      }else{
+      setCart(newCart)
     }
   }
   
@@ -30,13 +23,13 @@ export function CartContextProvider({children}){
   }
 
   function removeFromCart(id){
-    let copyCart = [...cart];
-    copyCart = copyCart.filter(item=>item.id!==id);
-    setCart(copyCart);
+    let copyCart = [...cart]
+    copyCart = copyCart.filter(item=>item.id!==id)
+    setCart(copyCart)
   }
 
   function removeAllFromCart(){
-    setCart([]); 
+    setCart([])
   }
 
   return(
