@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { cartContext } from '../../context/CartContextProvider/CartContextProvider'
-import { useContext } from 'react'
 
 const container1 = {display:'flex',justifyContent:'space-around',marginLeft:20,marginTop:40, width:'1000px', height:'50px'}
 
+// Agregar acá el total de la compra
+
 function ItemCart(props) {
     const {removeFromCart} = useContext(cartContext);
-
+ 
     function handleRemove(){
         removeFromCart(props.item.id);
     }
@@ -17,7 +18,7 @@ function ItemCart(props) {
         <p>{props.item.count}</p>
         <p>${props.item.price}</p>
         <button onClick={handleRemove}>Eliminar</button>
-        <p>${props.total}</p>
+        <p>${props.subtotal}</p>
     </div>
   )
 }

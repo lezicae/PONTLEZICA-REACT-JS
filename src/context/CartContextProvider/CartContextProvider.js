@@ -4,22 +4,13 @@ export const cartContext = createContext();
 
 export function CartContextProvider({children}){
   const [cart, setCart] = useState([])
+// agregar x product y que al actualizarlo se actualice el carrito.
 
-  function addToCart( itemProps, count ){
-    const newCart = [...cart, itemProps]
-    if (isInCart(itemProps.id)){
-        cart.map(item => {
-          return(item.id === itemProps.id ? null : item.count = count)
-        })
-      }else{
-      setCart(newCart)
-    }
-  }
-  
-  function isInCart(id){
-    return(
-      cart.some(item=>item.id===id)
-    )
+  function addToCart(product){
+    let copyCart = [...cart]
+    copyCart = copyCart.filter(item=>item.id!==product.id)
+    copyCart.push(product)
+    setCart(copyCart)
   }
 
   function removeFromCart(id){
