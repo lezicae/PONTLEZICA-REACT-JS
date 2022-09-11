@@ -1,30 +1,36 @@
 import React, { useEffect, useState } from "react"
-import itemsDatabase from "../Data";
 import ItemDetail  from "../ItemDetail/ItemDetail";
 import {useParams} from "react-router-dom";
+import firestoreDB from "../../services/firestore";
+import { getDoc, collection, doc } from 'firebase/firestore';
 
 function ItemDetailContainer() {
   let idItem = useParams().idItem
 
   const [unItem, setUnItem] = useState({});
 
-  function getItem(){
+  function getItemByid(idItem){
     return new Promise((resolve) => {
-        setTimeout(() => resolve(itemsDatabase), 2000);
+      const productsRef = collection(firestoreDB, "products");
+      const docRef = doc(productsRef, idItem);
+      getDoc(docRef).then(res=>{
+        resolve(
+          {...res.data(), id:res.id}
+        )
+      })
     });
   }
 
-useEffect(() => {
-    let itemRequested = itemsDatabase.find((elemento)=> elemento.id === Number(idItem))
+  useEffect(() => {
     if(idItem===undefined){
-      getItem().then((res) =>{
-        setUnItem({})
-      })
+      setUnItem({})
     }else
     {
-      setUnItem(itemRequested)
+      getItemByid(idItem).then((res) =>{
+        setUnItem(res)
+      })
     }
-}, [idItem]);
+  }, [idItem]);
 
   return (
     <>

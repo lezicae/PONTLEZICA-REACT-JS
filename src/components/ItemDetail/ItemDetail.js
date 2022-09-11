@@ -18,12 +18,12 @@ function ItemDetail(itemProps) {
   return (
     <div style={Container1}>
         <div>
-            <img src={itemProps.unItem.img} alt='itemImage'></img>
+          <img src={itemProps.unItem.img} alt='itemImage'></img>
         </div>
         <div>
-            <h2>{itemProps.unItem.title}</h2>
-            <p>{itemProps.unItem.description}</p>
-             {estado === 1 ? <ItemCount handleOnAdd={handleOnAdd} initial={1} stock={4}/> : <Link to={'/cart'}>Ir al carrito</Link>}
+          <h2>{itemProps.unItem.title}</h2>
+          <p>{itemProps.unItem.description}</p>
+           {estado === 1 ? <ItemCount handleOnAdd={handleOnAdd} initial={1} stock={4}/> : <Link to={'/cart'}>Ir al carrito</Link>}
         </div>
     </div>
   )

@@ -1,49 +1,56 @@
 import React, { useEffect, useState } from "react"
 import ItemsList from "../ItemsList/ItemsList"
-import itemsDatabase from "../Data";
- import {useParams} from "react-router-dom";
-// import firestoreDB from "../../services/firestore";
-// import { getDocs, collection } from 'firebase/firestore';
-
-// const products = collection(firestoreDB, "products");
-// const docsSnapshot = await getDocs(products);
-
-// const customFetch = ()  => {
-//   return new Promise((resolve) => {
-//   getDocs(docsSnapshot).then(res => {
-//     const docsData = res.docs.map(doc=> {
-//       return{
-//         ...doc.data(), id: doc.id
-//       }
-//     });
-//     resolve(docsData);
-//   });
-// })
-// }
+import {useParams} from "react-router-dom";
+import firestoreDB from "../../services/firestore";
+import { getDocs, collection, query, where } from 'firebase/firestore';
 
 
+
+// 2 promises una para todos y otra para el filtro
+
+const getAllItems = () => {
+  return new Promise((resolve) => {
+    const productsRef = collection(firestoreDB, "products");
+    getDocs(productsRef).then(res => {
+      const docsFromFirestore = res.docs.map(doc => {
+        return {
+          ...doc.data(), id: doc.id
+        }
+      });
+      resolve(docsFromFirestore);
+    });
+  })
+};
+const getItemByCategory = (idCat) => {
+  return new Promise((resolve) => {
+    const productsRef = collection(firestoreDB, "products");
+    const qCatSnapshot = query(productsRef, where("category","==",idCat))
+    getDocs(qCatSnapshot).then(res => {
+      const docsFromFirestore = res.docs.map(doc=>{
+        return{
+          ...doc.data(), id: doc.id
+        };
+      });
+      resolve(docsFromFirestore)
+    })
+  })
+};
 
 function ItemListContainer() {
   let idCat = useParams().idCat
-  
-  function getAllItems(){
-    return new Promise((resolve) => {
-        setTimeout(() => resolve(itemsDatabase), 2000);
-    });
-  }
 
   const [promiseData, setData] = useState([]);
 
   useEffect(() => {
-      let filter = itemsDatabase.filter(elemento => elemento.category === idCat)
-          if(idCat===undefined){
-            getAllItems().then((res) =>{
-              setData(res)
-            })
-          }else
-          {
-            setData(filter)
-          }
+    if(idCat===undefined){
+      getAllItems().then((res) => {
+        setData(res)
+      })
+    }else{
+      getItemByCategory(idCat).then((res) =>{
+        setData(res)
+      })
+    }
   }, [idCat]);
 
   return (
