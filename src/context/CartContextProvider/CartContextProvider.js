@@ -23,8 +23,14 @@ export function CartContextProvider({children}){
     setCart([])
   }
 
+  function totalCart(){
+    let cantCount = cart.map(item=>item.count * item.price);
+    let total = cantCount.reduce((a,b)=>a+b,0);
+    return total;
+  }
+
   return(
-    <cartContext.Provider value={{cart, addToCart, removeFromCart, removeAllFromCart}}>
+    <cartContext.Provider value={{cart, totalCart, addToCart, removeFromCart, removeAllFromCart}}>
       {children}
     </cartContext.Provider>
   )

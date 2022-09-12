@@ -4,8 +4,6 @@ import {useParams} from "react-router-dom";
 import firestoreDB from "../../services/firestore";
 import { getDocs, collection, query, where } from 'firebase/firestore';
 
-
-
 // 2 promises una para todos y otra para el filtro
 
 const getAllItems = () => {
