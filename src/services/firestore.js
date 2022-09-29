@@ -15,21 +15,3 @@ const app = initializeApp(firebaseConfig);
 const firestoreDB = getFirestore(app);
 
 export default firestoreDB;
-
-/*
-export async funcion asincrona
-for(let item of itemsdata[]){
-const respuesta = await addDoc(firestoreDB, "products", item);
-}
-
-importar en app
-
-button onclick
-
-toasty
-
-conditional rendering
-
-{buyer:{name, phone, mail},items:[{id,title,price}],total}
-
-*/

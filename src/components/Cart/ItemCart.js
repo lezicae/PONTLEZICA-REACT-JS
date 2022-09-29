@@ -1,8 +1,6 @@
 import React, { useContext } from 'react'
 import { cartContext } from '../../context/CartContextProvider/CartContextProvider'
 
-// Agregar acá el total de la compra
-
 function ItemCart(props) {
     const {removeFromCart} = useContext(cartContext);
  

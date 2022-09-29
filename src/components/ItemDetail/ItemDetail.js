@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Container1 = {display:'flex',justifyContent:'space-around',marginLeft:20,marginTop:40, width:'1200px', height:'700px'}
 
 function ItemDetail(itemProps) {
-  const [estado,setEstado] = useState(1);
+  const [estado,setEstado] = useState(0);
   const {addToCart} = useContext(cartContext);
 
   const handleOnAdd = (count)=>{
@@ -23,7 +23,7 @@ function ItemDetail(itemProps) {
         <div>
           <h2>{itemProps.unItem.title}</h2>
           <p>{itemProps.unItem.description}</p>
-           {estado === 1 ? <ItemCount handleOnAdd={handleOnAdd} initial={1} stock={4}/> : <Link to={'/cart'}>Ir al carrito</Link>}
+           {estado === 0 ? <ItemCount handleOnAdd={handleOnAdd} initial={1} stock={4}/> : <Link to={'/cart'}>Ir al carrito</Link>}
         </div>
     </div>
   )

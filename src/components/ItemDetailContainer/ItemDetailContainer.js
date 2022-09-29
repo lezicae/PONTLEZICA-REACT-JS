@@ -3,6 +3,7 @@ import ItemDetail  from "../ItemDetail/ItemDetail";
 import {useParams} from "react-router-dom";
 import firestoreDB from "../../services/firestore";
 import { getDoc, collection, doc } from 'firebase/firestore';
+import { Orbit } from '@uiball/loaders'
 
 function ItemDetailContainer() {
   let idItem = useParams().idItem
@@ -34,7 +35,7 @@ function ItemDetailContainer() {
 
   return (
     <>
-      <ItemDetail unItem={unItem}/>
+    {unItem.id === undefined ? <Orbit/> : <ItemDetail unItem={unItem}/>}
     </>
   )
 }
