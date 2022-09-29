@@ -13,7 +13,7 @@ function Cart() {
   useEffect(() => {
     setCartLenght(cart.length)
     setTotal(totalCart())
-    }, [cart, totalCart]);
+  }, [cart, totalCart]);
 
   function handleRemoveAll(){
     removeAllFromCart();

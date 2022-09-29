@@ -3,6 +3,7 @@ import ItemsList from "../ItemsList/ItemsList"
 import {useParams} from "react-router-dom";
 import firestoreDB from "../../services/firestore";
 import { getDocs, collection, query, where } from 'firebase/firestore';
+import { Orbit } from '@uiball/loaders'
 
 // 2 promises una para todos y otra para el filtro
 
@@ -53,7 +54,7 @@ function ItemListContainer() {
 
   return (
     <>
-      <ItemsList promiseData={promiseData}/>
+      {promiseData.length === 0 ? <Orbit/> : <ItemsList promiseData={promiseData}/>}
     </>
   )
 }

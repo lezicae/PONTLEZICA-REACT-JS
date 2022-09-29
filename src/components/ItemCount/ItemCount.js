@@ -22,13 +22,17 @@ function ItemCount(props){
   }
 
   return(
-    <div style={container1}>
+    <>
+    { props.stock === 0 ? <p>Producto sin stock</p> :
+      <div style={container1}>
       <h3 style={box2}>Agregar al carrito</h3>
       <button style={box1} onClick={ handleDecrement } >-</button>
       <h4 style={box2}>{count}</h4>
       <button style={box1} onClick={ handleIncrement } >+</button>
       <button style={box3} onClick={()=>{props.handleOnAdd(count)}}><FontAwesomeIcon icon={ faCartPlus }/></button>
-    </div>
+      </div>
+    }
+    </>
   )
 }
 
